@@ -1,0 +1,38 @@
+.ant-slider-track {
+    background-color: #D55200 !important; /* Change track color */
+}
+
+.ant-slider-handle {
+    border-color: #D55200 !important; /* Change handle border color */
+    background-color: #D55200 !important; /* Change handle color */
+}
+
+.ant-slider-rail {
+    background-color: #d5520054 !important; /* Change rail (the full track) color */
+}
+
+
+.ant-slider-dot-active {
+    border-color: #d55200 !important; /* Change active dot color */
+}
+
+.ant-slider-dot:hover {
+    border-color: #d55200 !important; /* Adjust dot border color on hover */
+}
+.ant-slider {
+    width: 100%; /* Adjust slider width */
+}
+
+.ant-radio-checked .ant-radio-inner {
+    background-color: #D55200 !important;
+    border-color: #D55200 !important;
+  }
+
+
+  .ant-radio:hover .ant-radio-inner {
+    border-color: #D55200 !important;
+  }
+  
+  .ant-radio-checked:hover .ant-radio-inner {
+    background-color: #D55200 !important;
+  }
