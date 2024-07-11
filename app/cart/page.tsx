@@ -1,11 +1,22 @@
 "use client";
-import { deleteIcon } from "@/assets/icons/global";
+import {
+  deleteIcon,
+  heartFullIcon,
+  heartOutlineIcon,
+} from "@/assets/icons/global";
 import ProductsCarucel from "@/components/ui/carusel/pr-carucel";
 import useCartStore from "@/store/cart";
 import { message, Popconfirm } from "antd";
 import Image from "next/image";
+import useWishlistStore from "@/store/wishlist-store";
+import { getDataFromCookie, setDataFromCookie } from "@/helpers/cookie";
+import { useState, useEffect } from "react";
+
 
 const CartPage = () => {
+  const token = getDataFromCookie("access_token");
+  const { likePost, dataWishlist } = useWishlistStore();
+  const [isLiked, setIsLiked] = useState(false);
   const {
     countCartPr,
     dataCardPr,
@@ -23,6 +34,15 @@ const CartPage = () => {
     const resStatus = await deleteFromCart(id);
     resStatus === 200 && message.success("Mahsulot olib tashlandi");
   };
+  // const handleLike = async (e: React.MouseEvent) => {
+  //   e.stopPropagation();
+  //   if (token) {
+  //     if (resStatus === 201) setIsLiked(true);
+  //     else if (resStatus === 200) setIsLiked(false);
+  //   } else {
+  //     router.push("/signin");
+  //   }
+  // };
 
   return (
     <div className="mb-10">
@@ -49,14 +69,14 @@ const CartPage = () => {
                 </b>
                 <div className="flex gap-4 md:gap-6 items-center">
                   <button
-                    className="p-[3px] px-3 md:p-2 md:px-4 text-red-600 rounded-lg border border-rose-600"
+                    className="p-[3px] px-3 md:p-2 md:px-4 text-black rounded-lg border border-black"
                     onClick={() => decrementQuantity(item.id)}
                   >
                     -
                   </button>
                   <b className="text-[14px] md:text-[18px]">{item.quantity}</b>
                   <button
-                    className="p-[3px] px-3 md:p-2 md:px-4 text-green-600 rounded-lg border border-green-600"
+                    className="p-[3px] px-3 md:p-2 md:px-4 text-black rounded-lg border border-black"
                     onClick={() => incrementQuantity(item.id)}
                   >
                     +
@@ -66,22 +86,33 @@ const CartPage = () => {
               <div>
                 <b className="text-[16px] md:text-[20px]">
                   {item.product_id.price * item.quantity}{" "}
-                  <span className="text-green-500">$</span>
+                  <span className="text-black">so'm</span>
                 </b>
-                <div className="flex gap-3 justify-end mt-5">
-                  <Popconfirm
-                    title="Olib tashlash"
-                    description="Bu mahsulotni savatingizdan olib tashlamoqchimisiz?"
-                    onConfirm={(e) => {
-                      handleDelete(item.id);
-                    }}
-                    okText="Ha"
-                    cancelText="Yo'q"
+                <div className="flex gap-2">
+                  <div className="flex gap-3 justify-end mt-5">
+                    <Popconfirm
+                      title="Olib tashlash"
+                      description="Bu mahsulotni savatingizdan olib tashlamoqchimisiz?"
+                      onConfirm={(e) => {
+                        handleDelete(item.id);
+                      }}
+                      okText="Ha"
+                      cancelText="Yo'q"
+                    >
+                      <div className="flex gap-2">
+                        <button className="flex items-center justify-center gap-[4px] bg-[#f0f0f0] py-[8px] px-[8px] md:py-[13px] md:px-[14px] rounded-lg">
+                          {deleteIcon}
+                        </button>
+                      </div>
+                    </Popconfirm>
+                  </div>
+                  <button
+                  
+                    className="flex items-center justify-center bg-[#f0f0f0] mt-5 w-[50px] h-[50px] md:py-3 px-11 md:px-4 rounded-lg"
+                    aria-label="Like"
                   >
-                    <button className="flex items-center justify-center gap-[4px] bg-[#f0f0f0] py-[8px] px-[8px] md:py-[13px] md:px-[14px] rounded-lg">
-                      {deleteIcon}
-                    </button>
-                  </Popconfirm>
+                    {isLiked ? heartFullIcon : heartOutlineIcon}
+                  </button>
                 </div>
               </div>
             </div>
@@ -99,7 +130,7 @@ const CartPage = () => {
             <div className="flex items-center gap-3">
               <span>Jami summa:</span>{" "}
               <b>
-                {sum} <span className="text-green-400">$</span>
+                {sum} <span className="text-black">so'm</span>
               </b>
             </div>
             <button className="w-full h-[46px] bg-[#FF6F14] rounded-lg text-white font-bold text-[14px] flex justify-center items-center gap-3">
