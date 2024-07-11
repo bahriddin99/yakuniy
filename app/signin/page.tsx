@@ -26,8 +26,8 @@ const SignInPage = () => {
   });
 
   const initialValues: SignIn = {
-    phone_number: "+998 (99) 359-07-26",
-    password: "Ominaweb12@",
+    phone_number: "",
+    password: "",
   };
 
   return (
