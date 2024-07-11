@@ -8,7 +8,7 @@ import ProductsCarousel from "@/components/ui/carusel/pr-carucel";
 import { getDataFromCookie } from "@/helpers/cookie";
 import useProductStore from "@/store/products";
 import { useEffect, useState } from "react";
-import CommentsTab from "@/components/product-tabSwitcher/comments";
+import CommentsTab from "@/components/product/comments";
 import { Flex, message, Rate } from "antd";
 
 const SingleProductPage = () => {
