@@ -51,7 +51,7 @@ const GlobalSearch = () => {
         value={search}
         onChange={handleChange}
         type="search"
-        placeholder="Smartfonlar..."
+        placeholder="Хочу купить.."
         className="w-full h-[46px] bg-[#f0f0f0] rounded-lg px-5 pr-10 outline-none text-[14px]"
       />
       <div className="absolute top-[15px] right-3">{searchIcon}</div>
@@ -70,7 +70,7 @@ const GlobalSearch = () => {
               ))
             ) : (
               <li className="w-full p-1 px-5 text-gray-500">
-                No results found
+                Topilmadi
               </li>
             )}
           </ul>

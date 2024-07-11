@@ -24,7 +24,7 @@ const useAccountStore = create<AcountStoreState>((set) => ({
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      set({ userData: [] }); // Clear userData on error
+      set({ userData: [] }); 
     } finally {
       set({ isLoading: false });
     }

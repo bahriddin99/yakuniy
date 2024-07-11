@@ -4,6 +4,7 @@ import {
   heartFullIcon,
   heartOutlineIcon,
 } from "@/assets/icons/global";
+
 import ProductsCarucel from "@/components/ui/carusel/pr-carucel";
 import useCartStore from "@/store/cart";
 import { message, Popconfirm } from "antd";
@@ -34,15 +35,7 @@ const CartPage = () => {
     const resStatus = await deleteFromCart(id);
     resStatus === 200 && message.success("Mahsulot olib tashlandi");
   };
-  // const handleLike = async (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-  //   if (token) {
-  //     if (resStatus === 201) setIsLiked(true);
-  //     else if (resStatus === 200) setIsLiked(false);
-  //   } else {
-  //     router.push("/signin");
-  //   }
-  // };
+
 
   return (
     <div className="mb-10">

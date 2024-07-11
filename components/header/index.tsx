@@ -23,6 +23,9 @@ import {
 } from "@/helpers/cookie";
 import useCartStore from "@/store/cart";
 import { useRouter } from "next/navigation";
+import Search from "@/components/ui/search"
+
+
 
 const Header = () => {
   const router = useRouter();
@@ -180,20 +183,15 @@ const Header = () => {
         </Link>
         <div className="hidden md:flex gap-5 w-full ml-20 mx-5">
           <CategoryModal />
-          <div className="relative w-full">
-            <input
-              placeholder="Хочу купить..."
-              className=" w-full h-[46px] bg-[#f0f0f0] rounded-lg px-5 outline-none text-[14px]"
-            />
-            <div className="absolute top-[15px] right-3">{searchIcon}</div>
-          </div>
+           <Search/>
+        
         </div>
 
         <div className="hidden md:flex gap-5 ">
           <Link
             href="/acount"
             onClick={handelLikePage}
-            className="flex items-center justify-center gap-[4px] bg-[#f0f0f0] py-[10px] px-[11px] rounded-lg"
+            className="flex items-center justify-center gap-[4px] bg-[#f0f0f0]  py-[10px] px-[11px] rounded-lg"
           >
            {heartOutlineIcon}
             <div className="w-[18px] h-[18px] bg-[#D55200] rounded-lg text-white text-[10px] mb-[12px] ml-[-8px] flex justify-center items-center">
